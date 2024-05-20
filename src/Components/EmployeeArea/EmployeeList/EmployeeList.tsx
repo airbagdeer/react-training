@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { EmployeeModel } from "../../../Models/EmployeeModel";
 import { employeeService } from "../../../Services/EmployeeService";
 import "./EmployeeList.css";
+import { notify } from "../../../Utils/notify";
 
 export function EmployeeList(): JSX.Element {
   const [employees, setEmployees] = useState<EmployeeModel[]>();
@@ -12,7 +13,7 @@ export function EmployeeList(): JSX.Element {
       .then((employees) => {
         setEmployees(employees);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => notify.error(err));
   });
 
   return (
@@ -34,24 +35,22 @@ export function EmployeeList(): JSX.Element {
           <tbody>
             {employees?.map((employee) => {
               return (
-                <>
-                  <tr>
-                    <td>{employee?.id}</td>
-                    <td>{employee?.firstName}</td>
-                    <td>{employee?.lastName}</td>
-                    <td>{employee?.title}</td>
-                    <td>{employee?.country}</td>
-                    <td>{employee?.city}</td>
-                    <td>{employee?.birthDate}</td>
-                    <td>
-                      <img
-                        src={employee?.imageUrl}
-                        alt="Employee Image"
-                        className="employee-image"
-                      />
-                    </td>
-                  </tr>
-                </>
+                <tr key={employee.id}>
+                  <td>{employee?.id}</td>
+                  <td>{employee?.firstName}</td>
+                  <td>{employee?.lastName}</td>
+                  <td>{employee?.title}</td>
+                  <td>{employee?.country}</td>
+                  <td>{employee?.city}</td>
+                  <td>{employee?.birthDate}</td>
+                  <td>
+                    <img
+                      src={employee?.imageUrl}
+                      alt="Employee Image"
+                      className="employee-image"
+                    />
+                  </td>
+                </tr>
               );
             })}
           </tbody>

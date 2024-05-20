@@ -4,18 +4,25 @@ import { ProductCard } from "../ProductCard/ProductCard";
 import { productService } from "../../../Services/ProductService";
 import { ProductModel } from "../../../Models/ProductModel";
 import { useEffect, useState } from "react";
+import { notify } from "../../../Utils/notify";
+import { NavLink } from "react-router-dom";
 
 export function ProductDetails(): JSX.Element {
   const [product, setProduct] = useState<ProductModel>();
 
   useEffect(() => {
     productService
-      .getOneProduct(id)
+      .getOneProduct(Number(id))
       .then((product) => {
         setProduct(product);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => notify.error(err));
   }, []);
+
+  function deleteProduct() {
+    alert("Deleting this product...");
+    productService.deleteProduct(product)
+  }
 
   const params = useParams();
   const id = params.prodId;
@@ -26,6 +33,15 @@ export function ProductDetails(): JSX.Element {
       <h3>Price: {product?.price}</h3>
       <h3>Stock: {product?.stock}</h3>
       <img src={product?.imageUrl}></img>
+
+      <br></br>
+      <NavLink to="/products"> Back </NavLink>
+      <span>|</span>
+      <NavLink to={"/products/edit/" + product?.id}> Edit </NavLink>
+      <span>|</span>
+      <NavLink to="products" onClick={deleteProduct}>
+         Delete
+      </NavLink>
     </div>
   );
 }

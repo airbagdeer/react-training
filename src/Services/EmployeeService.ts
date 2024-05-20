@@ -1,9 +1,10 @@
 import axios from "axios";
 import { EmployeeModel } from "../Models/EmployeeModel";
+import { appConfig } from "../Utils/AppConfig";
 
 class EmployeeService {
 	async getAllEmployees(){
-    const response = await axios.get<EmployeeModel[]>('http://localhost:3030/api/employees')
+    const response = await axios.get<EmployeeModel[]>(appConfig.employeesUrl)
     return response.data;
   }
 }

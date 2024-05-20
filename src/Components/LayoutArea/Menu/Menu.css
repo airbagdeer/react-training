@@ -10,3 +10,7 @@
   font-weight: bold;
   font-family: Arial;
 }
+
+.Menu .active + .Menu .active {
+  color: initial;
+}
