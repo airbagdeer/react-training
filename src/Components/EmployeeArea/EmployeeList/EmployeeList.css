@@ -1,0 +1,29 @@
+.EmployeeList {
+  /* Basic table styling */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: transparent;
+  }
+  tr:nth-child(even) {
+    background-color: transparent;
+  }
+  /* Center the table */
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
+  /* Style for the image */
+  .employee-image {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
