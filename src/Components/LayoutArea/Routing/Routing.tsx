@@ -9,6 +9,9 @@ import { ProductDetails } from "../../ProductArea/ProductDetails/ProductDetails"
 import { EmployeeList } from "../../EmployeeArea/EmployeeList/EmployeeList";
 import { AddProduct } from "../../ProductArea/AddProduct/AddProduct";
 import { EditProduct } from "../../ProductArea/EditProduct/EditProduct";
+import { Register } from "../../UserArea/Register/Register";
+import { Login } from "../../UserArea/Login/Login";
+import { NewEmployee } from "../../EmployeeArea/NewEmployee/NewEmployee";
 
 export function Routing(): JSX.Element {
   const LazyAbout = lazy(() => import("../../AboutArea/About/About"));
@@ -22,24 +25,18 @@ export function Routing(): JSX.Element {
   return (
     <div className="Routing">
       <Routes>
-        <Route path="/home" element={<Home></Home>}></Route>
-        <Route path="/products" element={<ProductList></ProductList>}></Route>
-        <Route path="/products/new" element={<AddProduct />}></Route>
-        <Route
-          path="/products/details/:prodId"
-          element={<ProductDetails />}
-        ></Route>
-        <Route
-          path="/products/edit/:prodId"
-          element={<EditProduct />}
-        ></Route>
-        <Route path="/about" element={suspenseAbout}></Route>
-        <Route
-          path="/employees"
-          element={<EmployeeList></EmployeeList>}
-        ></Route>
-        <Route path="/" element={<Navigate to="/home"></Navigate>}></Route>
-        <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
+        <Route path="/home" element={<Home></Home>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/new" element={<AddProduct />} />
+        <Route path="/products/details/:prodId" element={<ProductDetails />} />
+        <Route path="/products/edit/:prodId" element={<EditProduct />} />
+        <Route path="/about" element={suspenseAbout} />
+        <Route path="/employees" element={<EmployeeList />} />
+        <Route path="/employees/new" element={<NewEmployee />} />
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

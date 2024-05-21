@@ -3,9 +3,13 @@ import { EmployeeModel } from "../../../Models/EmployeeModel";
 import { employeeService } from "../../../Services/EmployeeService";
 import "./EmployeeList.css";
 import { notify } from "../../../Utils/notify";
+import { AppState } from "../../../Redux/store";
+import { useSelector } from "react-redux";
 
 export function EmployeeList(): JSX.Element {
   const [employees, setEmployees] = useState<EmployeeModel[]>();
+
+  // const employees = useSelector<AppState, EmployeeModel[]>(store=>store.employees)
 
   useEffect(() => {
     employeeService

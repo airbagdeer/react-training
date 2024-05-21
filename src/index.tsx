@@ -6,6 +6,10 @@ import { Layout } from "./Components/LayoutArea/Layout/Layout";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
+import { interceptor } from "./Utils/interceptor";
+import { MiniThemeContext, siteMiniTheme } from "./Utils/MiniTheme";
+
+interceptor.createInterceptor();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +17,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <Layout></Layout>
+      <MiniThemeContext.Provider value={siteMiniTheme}>
+        <Layout></Layout>
+      </MiniThemeContext.Provider>
     </Provider>
   </BrowserRouter>
 );
