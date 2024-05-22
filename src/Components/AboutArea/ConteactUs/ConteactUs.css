@@ -1,0 +1,9 @@
+.ConteactUs {
+  width: 450px;
+  display: contents;
+}
+
+.ConteactUs .Input {
+  width: 100%;
+  margin: 5px 0;
+}

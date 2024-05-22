@@ -12,6 +12,7 @@ import { EditProduct } from "../../ProductArea/EditProduct/EditProduct";
 import { Register } from "../../UserArea/Register/Register";
 import { Login } from "../../UserArea/Login/Login";
 import { NewEmployee } from "../../EmployeeArea/NewEmployee/NewEmployee";
+import { ConteactUs } from "../../AboutArea/ConteactUs/ConteactUs";
 
 export function Routing(): JSX.Element {
   const LazyAbout = lazy(() => import("../../AboutArea/About/About"));
@@ -35,6 +36,7 @@ export function Routing(): JSX.Element {
         <Route path="/about" element={suspenseAbout} />
         <Route path="/employees" element={<EmployeeList />} />
         <Route path="/employees/new" element={<NewEmployee />} />
+        <Route path="/contactus" element={<ConteactUs />} />
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

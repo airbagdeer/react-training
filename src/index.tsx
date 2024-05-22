@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import { store } from "./Redux/store";
 import { interceptor } from "./Utils/interceptor";
 import { MiniThemeContext, siteMiniTheme } from "./Utils/MiniTheme";
+import { ThemeProvider } from "@emotion/react";
+import { muiTheme } from "./Utils/MuiTheme";
 
 interceptor.createInterceptor();
 
@@ -17,9 +19,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Provider store={store}>
-      <MiniThemeContext.Provider value={siteMiniTheme}>
-        <Layout></Layout>
-      </MiniThemeContext.Provider>
+      <ThemeProvider theme={muiTheme}>
+        <MiniThemeContext.Provider value={siteMiniTheme}>
+          <Layout></Layout>
+        </MiniThemeContext.Provider>
+      </ThemeProvider>
     </Provider>
   </BrowserRouter>
 );
